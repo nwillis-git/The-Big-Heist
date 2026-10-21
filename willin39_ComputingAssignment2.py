@@ -30,3 +30,17 @@ def side_room(investigate, code):
     else:
         print("skipped room")
     return suspicion, clue
+
+def crack_code(suspicion, code):
+    newSuspicion = 0
+    print(f"You have time for {10-suspicion} guesses")
+    for i in range(10-suspicion):
+        guess = input("Guess the code: ")
+        if int(guess) == code:
+            print(f"Attempt {i + 1}: Guess = {guess}, correct")
+            return newSuspicion, True
+        else:
+            print(f"Attempt {i + 1}: Guess = {guess}, incorrect")
+            newSuspicion += 1
+    newSuspicion += 3
+    return newSuspicion, False
